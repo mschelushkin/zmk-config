@@ -17,6 +17,10 @@
 #define _SFT_SPC_ &mt LSHFT SPACE
 #define _SFT_RET_ &mt LSHFT RET
 
+&mt {
+    tapping-term-ms = <201>;
+    flavor = "tap-preferred";
+ };
 
 / {
         keymap {
