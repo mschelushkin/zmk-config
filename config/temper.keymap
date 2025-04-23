@@ -8,6 +8,16 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+#define _BT_0_    &bt BT_SEL 0
+#define _BT_1_    &bt BT_SEL 1
+#define _BT_2_    &bt BT_SEL 2
+#define _BT_3_    &bt BT_SEL 3
+#define _BT_4_    &bt BT_SEL 4
+#define _BT_CL_A_ &bt BT_CLR_ALL
+#define _SFT_SPC_ &mt LSHFT SPACE
+#define _SFT_RET_ &mt LSHFT RET
+
+
 / {
         keymap {
                 compatible = "zmk,keymap";
@@ -19,10 +29,20 @@
 //   Z  |  X |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  
 //            | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-&kp Q &kp W &kp E &kp R &kp T  &kp Y &kp U  &kp I     &kp O   &kp P 
-&kp A &mt LCTRL S &mt LALT D &mt LGUI F &kp G   &kp H &mt RGUI J  &mt RALT K &mt RCTRL L &kp SEMI
-&kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH 
-        &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+//      ╭───────────────────────────────────────────────────────────╮   ╭───────────────────────────────────────────────────────────╮
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+            &kp Q       &kp W       &kp E       &kp R       &kp T           &kp Y       &kp U       &kp I       &kp O       &kp P   
+//      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+            &kp A    &mt LCTRL S  &mt LALT D  &mt LGUI F     &kp G          &kp H    &mt RGUI J  &mt RALT K  &mt RCTRL L  &kp SEMI  
+//      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+            &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH  
+//      ╰───────────┼───────────┼───────────┼───────────┼───────────╯   ╰───────────┼───────────┼───────────┼───────────┼───────────╯
+                                  &kp ESC      &mo 1     _SFT_SPC_        _SFT_RET_     &mo 2      &kp BSPC
+//                              │                                   │   │                                   │
+//                              ╰───────────────────────────────────╯   ╰───────────────────────────────────╯
+//
               >;
       };
       lower_layer {
@@ -32,10 +52,19 @@
 //  BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-    &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR 
-    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9 &kp N0     
-    &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH 
-                          &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+//      ╭───────────────────────────────────────────────────────────╮   ╭───────────────────────────────────────────────────────────╮
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+           &kp EXCL    &kp AT     &kp HASH    &kp DLLR    &kp PRCNT       &kp CARET   &kp AMPS    &kp ASTRK   &kp LPAR    &kp RPAR  
+//      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+           &kp N1      &kp N2      &kp N3      &kp N4      &kp N5          &kp N6      &kp N7      &kp N8      &kp N9      &kp N0  
+//      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+           &trans      &trans      &trans      &trans      &trans         &kp MINUS   &kp EQUAL    &kp LBKT    &kp RBKT    &kp BSLH  
+//      ╰───────────┼───────────┼───────────┼───────────┼───────────╯   ╰───────────┼───────────┼───────────┼───────────┼───────────╯
+                                  &kp ESC      &mo 1     _SFT_SPC_        _SFT_RET_     &mo 2      &kp BSPC
+//                              │                                   │   │                                   │
+//                              ╰───────────────────────────────────╯   ╰───────────────────────────────────╯
               >;
       };
                 raise_layer {
@@ -45,11 +74,38 @@
 //      |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" 
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR 
-   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans
-   &bt BT_CLR_ALL   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE 
-                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+//      ╭───────────────────────────────────────────────────────────╮   ╭───────────────────────────────────────────────────────────╮
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+           &kp EXCL    &kp AT      &kp HASH   &kp DLLR     &kp PRCNT      &kp CARET   &kp AMPS    &kp ASTRK    &kp LPAR   &kp RPAR  
+//      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │      _    │     _     │     _     │     _     │
+           _BT_0_      _BT_1_      _BT_2_      _BT_3_      _BT_4_          &trans     &kp LEFT    &kp DOWN     &kp UP     &kp RIGHT     
+//      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+          _BT_CL_A_    &trans      &trans      &trans      &trans         &kp UNDER    &kp PLUS    &kp LBRC    &kp RBRC   &kp PIPE 
+//      ╰───────────┼───────────┼───────────┼───────────┼───────────╯   ╰───────────┼───────────┼───────────┼───────────┼───────────╯
+                                  &kp ESC      &mo 1     _SFT_SPC_        _SFT_RET_     &mo 2      &kp BSPC
+//                              │                                   │   │                                   │
+//                              ╰───────────────────────────────────╯   ╰───────────────────────────────────╯
                         >;
                 };
         };
 };
+ 
+//                                  Template for new layers all keys are transparent
+//      ╭───────────────────────────────────────────────────────────╮   ╭───────────────────────────────────────────────────────────╮
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+//      │    ___    │    ___    │    ___    │    ___    │    ___    │   │    ___    │    ___    │    ___    │    ___    │    ___    │
+//      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+//      │    ___    │    ___    │    ___    │    ___    │    ___    │   │    ___    │    ___    │    ___    │    ___    │    ___    │
+//      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
+//      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
+//      │    ___    │    ___    │    ___    │    ___    │    ___    │   │    ___    │    ___    │    ___    │    ___    │    ___    │
+//      ╰───────────┼───────────┼───────────┼───────────┼───────────╯   ╰───────────┼───────────┼───────────┼───────────┼───────────╯
+//                                   ___         ___              ___         ___
+//                              │                                   │   │                                   │
+//                              ╰───────────────────────────────────╯   ╰───────────────────────────────────╯
+//
+// vim:ft=cpp
+
