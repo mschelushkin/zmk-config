@@ -34,8 +34,8 @@
 // -----------------------------------------------------------------------------------------
 //   Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  
 //   A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  
-//   Z  |  X |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  
-//            | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+//   Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  | / (hold BT)
+//            | ESC | TAB/LWR | SPC/SFT |   | ENT/SFT | TAB/RSE | BSPC |
                         bindings = <
 //      ╭───────────────────────────────────────────────────────────╮   ╭───────────────────────────────────────────────────────────╮
 //      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
@@ -45,7 +45,7 @@
        &mt LSHIFT A    &mt LCTRL S  &mt LALT D  &mt LGUI F     &kp G          &kp H    &mt RGUI J  &mt RALT K  &mt RCTRL L  &mt LSHIFT SEMI  
 //      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
 //      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
-            &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &kp FSLH  
+            &kp Z       &kp X       &kp C       &kp V       &kp B           &kp N       &kp M     &kp COMMA    &kp DOT    &lt 3 FSLH
 //      ╰───────────┼───────────┼───────────┼───────────┼───────────╯   ╰───────────┼───────────┼───────────┼───────────┼───────────╯
                                   &kp ESC      &lt 1 TAB     _SFT_SPC_        _SFT_RET_     &lt 2 TAB      &kp BSPC
 //                              │                                   │   │                                   │
@@ -57,8 +57,8 @@
 // -----------------------------------------------------------------------------------------
 //   !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  
 //   1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  
-//  BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+//      |     |     |     |     |   |  _  |  +  |  {  |  }  | PIPE
+//                    | transparent thumbs |
                         bindings = <
 //      ╭───────────────────────────────────────────────────────────╮   ╭───────────────────────────────────────────────────────────╮
 //      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
@@ -68,7 +68,7 @@
            &kp N1      &kp N2      &kp N3      &kp N4      &kp N5          &kp N6      &kp N7      &kp N8      &kp N9      &kp N0  
 //      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
 //      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
-           &trans      &trans      &trans      &trans      &trans         &kp MINUS   &kp EQUAL    &kp LBKT    &kp RBKT    &kp BSLH  
+           &trans      &trans      &trans      &trans      &trans         &kp UNDER   &kp PLUS     &kp LBRC    &kp RBRC    &kp PIPE
 //      ╰───────────┼───────────┼───────────┼───────────┼───────────╯   ╰───────────┼───────────┼───────────┼───────────┼───────────╯
                                    &trans      &trans      &trans          &trans      &trans      &trans
 //                              │                                   │   │                                   │
@@ -77,29 +77,39 @@
       };
                 raise_layer {
 // -----------------------------------------------------------------------------------------
-//   !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  
-//      |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  
-//      |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" 
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+//  F1  | F7  |     |     |     |   |  "  |  '  |  `  |  ~  | (transparent)
+//  F2  | F3  | F4  | F5  | F6  |   | LFT | DWN |  UP | RGT |
+//  F8  | F9  | F10 | F11 | F12 |   |  -  |  =  |  [  |  ]  | BSLH
+// Corne positions preserved for F2-F6 and F8-F12; F1/F7 replace the missing outer column.
+//                    | transparent thumbs |
                         bindings = <
 //      ╭───────────────────────────────────────────────────────────╮   ╭───────────────────────────────────────────────────────────╮
 //      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
-           &kp EXCL    &kp AT      &kp HASH   &kp DLLR     &kp PRCNT      &kp CARET   &kp AMPS    &kp ASTRK    &kp LPAR   &kp RPAR  
+           &kp F1      &kp F7      &trans     &trans       &trans         &kp DQT     &kp SQT     &kp GRAVE   &kp TILDE   &trans
 //      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
 //      │     _     │     _     │     _     │     _     │     _     │   │     _     │      _    │     _     │     _     │     _     │
-           _BT_0_      _BT_1_      _BT_2_      _BT_3_      _BT_4_          &kp LEFT    &kp DOWN     &kp UP     &kp RIGHT   &trans
+           &kp F2      &kp F3      &kp F4      &kp F5      &kp F6          &kp LEFT    &kp DOWN     &kp UP     &kp RIGHT   &trans
 //      ├───────────┼───────────┼───────────┼───────────┼───────────┤   ├───────────┼───────────┼───────────┼───────────┼───────────┤
 //      │     _     │     _     │     _     │     _     │     _     │   │     _     │     _     │     _     │     _     │     _     │
-          _BT_CL_A_    &trans      &trans      &trans      &trans         &kp UNDER    &kp PLUS    &kp LBRC    &kp RBRC   &kp PIPE 
+          &kp F8      &kp F9      &kp F10     &kp F11     &kp F12         &kp MINUS    &kp EQUAL   &kp LBKT    &kp RBKT   &kp BSLH
 //      ╰───────────┼───────────┼───────────┼───────────┼───────────╯   ╰───────────┼───────────┼───────────┼───────────┼───────────╯
                                    &trans      &trans      &trans          &trans      &trans      &trans
 //                              │                                   │   │                                   │
 //                              ╰───────────────────────────────────╯   ╰───────────────────────────────────╯
                         >;
                 };
-                
+
+                bluetooth_layer {
+                        // Hold the base-layer slash key to access Bluetooth controls.
+                        // Profiles 0-4 on A-G; clear all bonds on Z.
+                        bindings = <
+                            &trans      &trans      &trans      &trans      &trans         &trans      &trans      &trans      &trans      &trans
+                            _BT_0_      _BT_1_      _BT_2_      _BT_3_      _BT_4_         &trans      &trans      &trans      &trans      &trans
+                            _BT_CL_A_   &trans      &trans      &trans      &trans         &trans      &trans      &trans      &trans      &trans
+                                        &trans      &trans      &trans         &trans      &trans      &trans
+                        >;
+                };
         };
-        // TODO: tab, F-row
 };
  
 //                                  Template for new layers all keys are transparent

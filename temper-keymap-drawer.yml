@@ -1,0 +1,38 @@
+# Keymap Drawer / Streamlit input
+# Source: config/temper.keymap (personal Temper ZMK configuration)
+# Layout: 36-key split 3x5+3, drawn ortholinearly (not exact PCB stagger).
+# Key order follows ZMK bindings: each full row left-to-right, then thumbs.
+# t = tap, h = hold; transparent keys inherit the underlying layer.
+# Bluetooth labels use the actual ZMK profile indices, 0 through 4.
+layout:
+  ortho_layout:
+    split: true
+    rows: 3
+    columns: 5
+    thumbs: 3
+
+layers:
+  Base:
+    - [Q, W, E, R, T, Y, U, I, O, P]
+    - [{t: A, h: LShift}, {t: S, h: LCtrl}, {t: D, h: LAlt}, {t: F, h: LGUI}, G, H, {t: J, h: RGUI}, {t: K, h: RAlt}, {t: L, h: RCtrl}, {t: ';', h: LShift}]
+    - [Z, X, C, V, B, N, M, ',', '.', {t: '/', h: Bluetooth}]
+    - [Esc, {t: Tab, h: Lower}, {t: Space, h: LShift}, {t: Enter, h: LShift}, {t: Tab, h: Raise}, Backspace]
+
+  Lower:
+    - ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
+    - ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    - [{t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, '_', '+', '{', '}', '|']
+    - [{t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}]
+
+  # Preserve Corne F2-F6 and F8-F12 positions; F1/F7 use Q/W.
+  Raise:
+    - [F1, F7, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, '"', "'", '`', '~', {t: '▽', type: trans}]
+    - [F2, F3, F4, F5, F6, '←', '↓', '↑', '→', {t: '▽', type: trans}]
+    - [F8, F9, F10, F11, F12, '-', '=', '[', ']', '\']
+    - [{t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}]
+
+  Bluetooth:
+    - [{t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}]
+    - ['BT 0', 'BT 1', 'BT 2', 'BT 3', 'BT 4', {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}]
+    - ['BT Clear All', {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}]
+    - [{t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}, {t: '▽', type: trans}]
